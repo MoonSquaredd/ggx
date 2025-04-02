@@ -1,14 +1,14 @@
-//  ********************************************************
-// |                                                        |
-// | Guilty Gear X Plus Decompilation for the PlayStation 2 |
-// |                                                        |
-//  ********************************************************
+// **********************************************************
+// *                                                        *
+// * Guilty Gear X Plus Decompilation for the PlayStation 2 *
+// * SLPM-64525                                             *
+// **********************************************************
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
+//
+// Last Revision: 5/Dec/2025
 
-#include <stdio.h>
 #include <stdarg.h>
-#include <types.h>
 
 #include "graph.h"
 #include "sprite.h"
@@ -26,11 +26,11 @@
 #include "system.h"
 
 // PS2 SDK includes
-#include "../ps2sdk/sifrpc.h"
-#include "../ps2sdk/eecdvd.h"
-#include "../ps2sdk/iopreset.h"
-#include "../ps2sdk/filestub.h"
-#include "../ps2sdk/graphdev.h"
+#include "../sce/includes/sifrpc.h"
+#include "../sce/includes/eecdvd.h"
+#include "../sce/includes/iopreset.h"
+#include "../sce/includes/filestub.h"
+#include "../sce/includes/graphdev.h"
 
 extern TotalCounter;
 extern JSTokorotenFlag;

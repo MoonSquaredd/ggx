@@ -1,4 +1,5 @@
 # ggx
+<<<<<<< HEAD
 Reverse Engineering project of the Guilty Gear X series games.
 This project is done for Documenting/Modding purposes only, no profit involved.
 
@@ -24,3 +25,6 @@ These games are also taken into consideration but arent directly related to the 
 - Guilty Gear Petit 2
 - Guilty Gear Isuka
 - Guilty Gear Judgement
+=======
+A Recreation of Guilty Gear X Plus Source Code for the PlayStation 2
+>>>>>>> 6523a27 (Initial commit)
