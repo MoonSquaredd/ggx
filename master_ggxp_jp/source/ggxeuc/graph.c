@@ -36,12 +36,86 @@ void BackColor(u_int rgb)
 
 void GraphConv(void)
 {
-  
+  int x;
+  int y;
+  int sizex;
+  int sizey;
+  u_long reg[8] = {0x50,0xa0000000a1180,0x51,0,0x52,0x1c000000280,0x53,2};
+
+  if (dispoffset.x < 0) {
+    sizex = dispoffset.x + 640;
+    x = -dispoffset.x;
+  }
+  else
+  {
+    x = 0;
+    sizex = 640;
+  }
+
+  if (dispoffset.y < 0) {
+    sizey = dispoffset.y + 448;
+    y = -dispoffset.y;
+  }
+  else
+  {
+    y = 0;
+    sizey = 448;
+  }
+
+  reg[5] = (long)sizex | (long)sizey << 0x20;
+  reg[3] = (long)x | (long)y << 0x10;
+
+  PacketDmaTagCnt(3);
+  PacketPackRegsWithTag(3,reg,4);
+  PacketPackRegWithTag(3,66,0x8000000064);
+  return;
 }
 
 void GraphInit(void)
 {
   sceDmaEnv env;
+
+  sceDevVif0Reset();
+  sceDevVu0Reset();
+  sceGsResetPath();
+  sceDmaReset(1);
+  sceDevGifPutImtMode(0);
+  PacketInit();
+
+  sceDmaGetEnv(&env);
+  env.notify = 2;
+  sceDmaPutEnv(&env);
+
+  sceGsResetGraph(0,1,2,0);
+  sceGsSetDefDispEnv(&disp,0,640,448,0,0);
+  sceGsSetDefDrawEnv(&draw,0,640,224,0,0);
+
+  BackColor(0);
+
+  PacketBegin();
+  PacketDmaTagCnt(0);
+  PacketPackRegWithTag(0,0x4c,(u_long)draw.frame1);
+  PacketPackRegWithTag(0,0x4e,(u_long)draw.zbuf1);
+  PacketPackRegWithTag(0,0x18,(u_long)draw.xyoffset1);
+  PacketPackRegWithTag(0,0x40,(u_long)draw.scissor1);
+  PacketPackRegWithTag(0,0x1a,(u_long)draw.prmodecont);
+  PacketPackRegWithTag(0,8,0);
+  PacketPackRegWithTag(0,0x46,(u_long)draw.colclamp);
+  PacketPackRegWithTag(0,0x45,(u_long)draw.dthe);
+  PacketPackRegWithTag(0,0x47,(u_long)draw.test1);
+  PacketPackRegWithTag(0,0x42,0x44);
+  PacketPackRegWithTag(0,0x49,0);
+  PacketPackRegWithTag(0,0x3b,0x8000000000);
+  PacketPackRegWithTag(0,0x4a,0);
+
+  PacketSendNow(0);
+  GraphBegin();
+  GraphEnd();
+  
+  FlushCache(0);
+  sceGsPutDispEnv(&disp);
+  frame = 0;
+  return;
 }
 
 void MakeFullBuffer(void)
