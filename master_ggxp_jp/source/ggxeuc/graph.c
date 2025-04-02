@@ -171,7 +171,7 @@ void GraphSetOffset(int x, int y)
 {
   
 }
-
+// functions below are unused, possibly arcade leftovers
 void dbg_frame_save(void)
 {
   char file_name[256];
