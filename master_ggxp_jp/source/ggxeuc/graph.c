@@ -120,7 +120,19 @@ void GraphInit(void)
 
 void MakeFullBuffer(void)
 {
-  
+  u_long *ptr;
+
+  PacketDmaTagCnt(0);
+  PacketPackRegWithTag(0,0x4c,0xa008c);
+  PacketPackRegWithTag(0,0x40,0x1bf0000027f0000);
+  PacketPackRegWithTag(0,0x42,0x80000000a8);
+  ptr = PacketGifTag(0,0x4400000000000001,0x5510);
+  *ptr = 326;
+  ptr[1] = back_color;
+  ptr[2] = 0x79006c00;
+  ptr[3] = 0x95009400;
+  PacketPointerSet(0,ptr+4);
+  return;
 }
 
 void MakeFrameBuffer(void)
@@ -130,12 +142,24 @@ void MakeFrameBuffer(void)
 
 void GraphBegin(void)
 {
-  
+  PacketBegin();
+  MakeFullBuffer();
+  PacketEnd(1);
+  PacketBegin();
+  return;
 }
 
 void GraphEnd(void)
 {
-  
+  PacketEnd(1);
+  sceGsSyncPath(0,0);
+  sceGsSyncV(0);
+  PacketBegin();
+  GraphConv();
+  PacketEnd(1);
+  sceGsSyncPath(0,0);
+  frame += 1;
+  return;
 }
 
 void GS_runtime_preset(void)
