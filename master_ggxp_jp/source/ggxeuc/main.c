@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <types.h>
+
 #include "graph.h"
 #include "sprite.h"
 #include "job.h"
@@ -15,6 +16,12 @@
 #include "soundnew.h"
 #include "memory.h"
 #include "system.h"
+
+#include "sifrpc.h"
+#include "eecdvd.h"
+#include "iopreset.h"
+#include "filestub.h"
+#include "graphdev.h"
 
 extern TotalCounter;
 extern JSTokorotenFlag;
