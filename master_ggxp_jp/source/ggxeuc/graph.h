@@ -1,7 +1,7 @@
 #ifndef graph
 #define graph
 
-#include "types.h"
+#include <types.h>
 #include "graphdev.h"
 
 extern u_long back_color;
