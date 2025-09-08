@@ -1,38 +1,25 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "types.h"
+#include <types.h>
+#include "graph.h"
+#include "sprite.h"
+#include "job.h"
+#include "text.h"
+#include "meter.h"
+#include "pad.h"
+#include "file.h"
+#include "fade.h"
+#include "allinit.h"
+#include "credit.h"
+#include "sound.h"
+#include "soundnew.h"
+#include "memory.h"
+#include "system.h"
 
 extern TotalCounter;
 extern JSTokorotenFlag;
 
 void debugf(char*,...);
-void GraphInit(); // in graph.c
-void GS_runtime_preset();
-void GraphBegin();
-void GraphEnd();
-void SpriteInit(); // in sprite.c
-void SpriteDisplay();
-void JobInit(); // in job.c
-void JobMain();
-void TextRead(); // in text.c
-void TextColor(int);
-void TextPutD(u_int,u_int,long,u_int);
-void MeterInit(); // in meter.c
-void MeterReset();
-int MeterColorChange(int);
-void PadReadInit(); // in pad.c
-void PadReadMain();
-void FileIRXLoad(char*); // in file.c
-void FileInit();
-void FileReadMain();
-void FadeInit(); // in fade.c
-void FadeExecute();
-void soft_reset_check(); // in allinit.c
-int CreditExecute(); // in credit.c
-int SongContExe(); // in sound.c
-void SnDrvMain(); // in soundnew.c
-void MemoryInit(); // in memory.c
-void heap_alloc(); // in system.c
 
 int se_max_temp = 0;
 int se_req_temp[20] = {0};
