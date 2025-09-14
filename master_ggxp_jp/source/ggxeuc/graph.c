@@ -1,32 +1,12 @@
 #include <stdio.h>
-#include "types.h"
-
-void GraphBegin();
-void GraphEnd();
-void grp_except_store_image(void*,int,int,int,int,int,int,int);
-void dma_notify_channel_set(int);
-void dma_chcr_tte_set(int,int);
-u_long * PacketDmaTagCnt(int); // in packet.c
-u_long * PacketPackRegsWithTag(int,u_long*,int);
-u_long * PacketPackRegWithTag(int,u_long,u_long);
-void PacketInit();
-void PacketBegin();
-void PacketSendNow(int);
-u_long * PacketGifTag(int,u_long,u_long);
-void PacketPointerSet(int,u_long*);
-void PacketEnd(int);
+#include <types.h>
+#include "graph.h"
+#include "packet.h"
 
 u_long back_color = 0;
 int frame = 0;
 sceGsDispEnv disp = {0};
 sceGsDrawEnv1 draw = {0};
-
-struct {
-  int x;
-  int y;
-  int sizex;
-  int sizey;
-} dispoffset;
 
 void BackColor(u_int rgb)
 {
