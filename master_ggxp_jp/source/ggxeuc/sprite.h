@@ -2,6 +2,7 @@
 #define sprite
 
 #include <types.h>
+#include "g_strip.h"
 
 typedef struct {
   float key;
@@ -9,47 +10,6 @@ typedef struct {
   u_short size;
   int id;
 } SPR_INDEX;
-
-typedef struct {
-  float x;
-  float y;
-  float z;
-  u_int col;
-} NLVERTEX00;
-
-typedef struct {
-  float x;
-  float y;
-  float z;
-  float w;
-  float u;
-  float v;
-  u_int col;
-  u_int ofs;
-} NLVERTEX03;
-
-typedef struct {
-  int sprno;
-  float x;
-  float y;
-  float z;
-  float zm_x;
-  float zm_y;
-  float u0;
-  float v0;
-  float u1;
-  float v1;
-  int ang;
-  float trnsl;
-  short listType;
-  short attr;
-  int base_color;
-  int offset_color;
-  int sizex;
-  int sizey;
-  int unknown;
-  long tex;
-} NL_SPR_ARG;
 
 extern SPR_INDEX spr_index[1200];
 extern u_short spr_buf[16000];
