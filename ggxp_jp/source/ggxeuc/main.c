@@ -32,8 +32,8 @@
 #include "../sce/includes/filestub.h"
 #include "../sce/includes/graphdev.h"
 
-extern TotalCounter;
-extern JSTokorotenFlag;
+extern int TotalCounter;
+extern int JSTokorotenFlag;
 
 void debugf(char*,...);
 

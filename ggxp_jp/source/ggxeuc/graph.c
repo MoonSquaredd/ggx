@@ -12,8 +12,8 @@
 #include "../sce/includes/devgif.h"
 #include "../sce/includes/filestub.h"
 
-u_long back_color = 0;
-int frame = 0;
+u_long back_color = 0; // The background color which everything in rendered on top.
+int frame = 0;         // Counts frames rendered.
 
 sceGsDispEnv disp = {0};
 sceGsDrawEnv1 draw = {0};
@@ -30,16 +30,16 @@ void BackColor(u_int rgb) {
 }
 
 void GraphConv(void) {
-    long y;
+    int sy;
     int sizey;
     int sizex;
-    u_long x;
+    int sx;
     u_long reg[8];
 
     reg[0] = 0x50;
     reg[1] = 0xa0000000a1180;
     reg[2] = 0x51;
-    reg[3] = 0;             // y     | x
+    reg[3] = 0;             // sy    | sx
     reg[4] = 0x52;
     reg[5] = 0x1c000000280; // sizey | sizex
     reg[6] = 0x53;
@@ -47,21 +47,21 @@ void GraphConv(void) {
 
     if (dispoffset.x < 0) {
         sizex = dispoffset.x + 640;
-        x = (u_long)-dispoffset.x;    
+        sx = (u_long)-dispoffset.x;    
     } else {
-        x = 0;
+        sx = 0;
         sizex = 640;    
     }
     sizey = 448;
     if (dispoffset.y < 0) {
         sizey = dispoffset.y + 448;
-        y = (long)-dispoffset.y;
+        sy = (long)-dispoffset.y;
     } else {
-        y = 0;    
+        sy = 0;    
     }
 
     reg[5] = sizex | sizey << 0x20;
-    reg[3] = x | y << 0x10;
+    reg[3] = sx | sy << 0x10;
     
     PacketDmaTagCnt(3);
     PacketPackRegsWithTag(3,reg,4);
@@ -248,7 +248,7 @@ void dma_notify_channel_set(int channel) {
 }
 
 void dma_chcr_tte_set(int channel, int flag) {
-    u_int *dmac = (u_int *)sceDmaGetChan(channel);
+    sceDmaChan *dmac = sceDmaGetChan(channel);
     *dmac = *dmac & 0xffffffbf | (u_int)(flag == 1) << 6;
     return;
 }
