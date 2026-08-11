@@ -8,8 +8,15 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+// Definitions for job.c
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+#ifndef GGX_JOB
+#define GGX_JOB
+
+#define JOB_ALLINIT_I 1
+
+extern int JobMode;
+
+void JobInit(void);
+
+#endif

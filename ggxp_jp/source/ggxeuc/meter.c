@@ -8,8 +8,9 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+#include "meter.h"
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+void MeterInit(void) {
+    REG_RCNT0_MODE = 0x83;          //Clock=HBLANK, TimerEnable=true
+    return;
+}

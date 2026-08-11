@@ -23,8 +23,8 @@ typedef struct {
     int size;
     int format;
     int dbp;
-    short w;
-    short h;
+    short int w;
+    short int h;
     u_long data;
 } TEX_HEADER;
 

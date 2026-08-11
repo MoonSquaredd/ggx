@@ -8,8 +8,14 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+// Definitions for meter.c
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+#ifndef GGX_METER
+#define GGX_METER
+
+// SCE includes
+#include <eeregs.h>
+
+void MeterInit(void);
+
+#endif

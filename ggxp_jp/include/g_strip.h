@@ -8,8 +8,12 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+// Definitions for g_strip.c
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+#ifndef GGX_G_STRIP
+#define GGX_G_STRIP
+
+void gCurrentColorSet(float);
+void gFadeValSet(float);
+
+#endif

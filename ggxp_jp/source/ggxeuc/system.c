@@ -12,6 +12,21 @@
 
 void debugf(char*,...);
 
+// .sdata
+char *HeapTop = NULL;
+char *HeapNow = NULL;
+char *HeapEnd = NULL;
+
+void heap_alloc(void) {
+    HeapTop = mmalloc(0x30000,"HEAP");
+    if (HeapTop == NULL) {
+        debugf("No Heap Area\n");
+    }
+    HeapNow = HeapTop;
+    HeapEnd = HeapTop + 0x30000;
+    return;
+}
+
 // malloc wrapper
 void * mmalloc(int size, char *name) {
     void *adr;

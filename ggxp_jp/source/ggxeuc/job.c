@@ -8,8 +8,12 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+#include "job.h"
 
 // .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+int JobMode = 0;
+
+void JobInit(void) {
+    JobMode = JOB_ALLINIT_I;
+    return;
+}

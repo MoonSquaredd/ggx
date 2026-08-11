@@ -8,8 +8,15 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+// Definitions for fade.c
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+#ifndef GGX_FADE
+#define GGX_FADE
+
+// GGX includes
+#include "g_strip.h"
+
+void FadeoutExecute(void);          //Executes a fade-out
+void FadeInit(void);                //Initialize fade values
+
+#endif

@@ -8,8 +8,22 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+#include "g_strip.h"
 
-// .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+// .sbss
+unsigned int Gcol;
+float gfadeval;
+
+void gCurrentColorSet(float val) {
+    int i;
+    
+    i = (gfadeval * val * 255.0);
+    Gcol = i << 16 | i << 8 | i;
+    return;
+}
+
+void gFadeValSet(float val) {
+    gfadeval = val;
+    gCurrentColorSet(1.0);
+    return;
+}

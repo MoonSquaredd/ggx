@@ -8,8 +8,7 @@
 //
 // Last Revision: 11/Aug/2026
 
-#include "game.h"
+#include "js_act.h"
 
 // .sdata
-u_int Pause = 0;
-int TotalCounter = 0;               //Total frames/loops executed
+int JSTokorotenFlag = 0;

@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+void heap_alloc(void);
 void * mmalloc(int,char*);          //malloc wrapper
 
 #endif

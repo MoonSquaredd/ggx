@@ -20,9 +20,16 @@
 
 // GGX includes
 #include "graph.h"
+#include "job.h"
 #include "text.h"
+#include "meter.h"
 #include "pad.h"
 #include "file.h"
+#include "fade.h"
+#include "game.h"
+#include "js_act.h"
+#include "memory.h"
+#include "system.h"
 
 #define CDROM
 #define REPLACE
@@ -82,6 +89,14 @@ int main (int argc, char **argv) {
     TextRead();
     PadReadInit();
     FileInit();
+    FadeInit();
+    MemoryInit();
+    MeterInit();
+    JobInit();
+    TotalCounter = 0;
+    JSTokorotenFlag = 0;
+    heap_alloc();
+    debugf("Initialize Over\n");
 }
 
 void debugf(char *format, ...) {
