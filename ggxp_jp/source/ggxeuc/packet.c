@@ -132,6 +132,22 @@ u_long * PacketPackRegsWithTag(int id, u_long *reglist, int num) {
     return p->ptr;
 }
 
+//Copies size bytes from data to a DMA packet in quadwords
+u_long * PacketCopy(int id, u_long *data, int size) {
+    DMA_HANDLE *p;
+
+    if (size < 0) {
+        size += 7;
+    }
+    size >>= 3;
+    p = handle_list[id];
+    for (int i = 0; i < size; i++) {
+        p->ptr[i] = data[i];
+    }
+    p->ptr += size;
+    return p->ptr;
+}
+
 //Sets the DMA packet pointer
 void PacketPointerSet(int id, u_long *ptr) {
     handle_list[id]->ptr = ptr;

@@ -8,17 +8,11 @@
 //
 // Last Revision: 10/Aug/2026
 
-// Definitions for file.c
+// Definitions for game.c
 
-#ifndef GGX_FILE
-#define GGX_FILE
+#ifndef GGX_GAME
+#define GGX_GAME
 
-//C includes
-#include <string.h>
-
-//SCE includes
-#include <sifdev.h>
-
-void FileIRXLoad(char*);            //Loads modules
+extern u_int Pause;
 
 #endif

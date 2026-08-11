@@ -8,6 +8,8 @@
 //
 // Last Revision: 10/Aug/2026
 
+// Definitions for graph.c
+
 #ifndef GGX_GRAPH
 #define GGX_GRAPH
 

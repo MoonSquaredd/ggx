@@ -8,17 +8,23 @@
 //
 // Last Revision: 10/Aug/2026
 
-// Definitions for file.c
+// Definitions for text.c
 
-#ifndef GGX_FILE
-#define GGX_FILE
+#ifndef GGX_TEXT
+#define GGX_TEXT
 
-//C includes
-#include <string.h>
+//GGX includes
+#include "packet.h"
 
-//SCE includes
-#include <sifdev.h>
+typedef struct {
+    int size;
+    int format;
+    int dbp;
+    short w;
+    short h;
+    u_long data;
+} TEX_HEADER;
 
-void FileIRXLoad(char*);            //Loads modules
+void TextRead(void);                //Reads font data into vram
 
 #endif

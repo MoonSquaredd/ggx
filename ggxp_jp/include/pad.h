@@ -8,17 +8,22 @@
 //
 // Last Revision: 10/Aug/2026
 
-// Definitions for file.c
+// Definitions for pad.c
 
-#ifndef GGX_FILE
-#define GGX_FILE
-
-//C includes
-#include <string.h>
+#ifndef GGX_PAD
+#define GGX_PAD
 
 //SCE includes
-#include <sifdev.h>
+#include <libpad.h>
 
-void FileIRXLoad(char*);            //Loads modules
+//GGX includes
+#include "game.h"
+
+typedef struct {
+    u_short small;
+    u_short large;
+} PAD_ACT;
+
+void PadReadInit(void);             //Initialize gamepads
 
 #endif

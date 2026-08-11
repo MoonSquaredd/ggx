@@ -8,6 +8,8 @@
 //
 // Last Revision: 10/Aug/2026
 
+// Definitions for packet.c
+
 #ifndef GGX_PACKET
 #define GGX_PACKET
 
@@ -35,6 +37,7 @@ u_long * PacketDmaTagEnd(int,int);
 u_long * PacketGifTag(int,u_long,u_long);
 u_long * PacketPackRegWithTag(int,u_long,u_long);
 u_long * PacketPackRegsWithTag(int,u_long*,int);
+u_long * PacketCopy(int,u_long*,int); //Copies size bytes from data to a DMA packet in quadwords
 void PacketPointerSet(int,u_long*); //Sets the DMA packet pointer
 void PacketBegin(void);             //Starts a new DMA packet on all handlers
 void PacketSendNow(int);            //Sends a DMA packet immediately

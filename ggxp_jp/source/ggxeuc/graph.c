@@ -126,6 +126,7 @@ void MakeFullBuffer(void) {
     return;
 }
 
+//Prepares the next frame
 void GraphBegin(void) {
     PacketBegin();
     MakeFullBuffer();
@@ -134,6 +135,7 @@ void GraphBegin(void) {
     return;
 }
 
+//Renders the next frame
 void GraphEnd(void) {
     PacketEnd(1);
     sceGsSyncPath(0,0);

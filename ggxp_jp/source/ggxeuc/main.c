@@ -19,16 +19,18 @@
 #include <libcdvd.h>
 
 //GGX includes
+#include "graph.h"
+#include "text.h"
+#include "pad.h"
 #include "file.h"
 
-#define DEBUG
 #define CDROM
 #define REPLACE
 
 #ifdef CDROM
-#define IOPRP "cdrom0:\\"IOP_IMAGE_FILE";1" //IOP_IMAGE_FILE = IOPRP250.IMG
+    #define IOPRP "cdrom0:\\"IOP_IMAGE_FILE";1" //IOP_IMAGE_FILE = IOPRP250.IMG
 #else
-#define IOPRP "host0:/usr/local/sce/iop/modules/"IOP_IMAGE_file
+    #define IOPRP "host0:/usr/local/sce/iop/modules/"IOP_IMAGE_file
 #endif
 
 void debugf(char*,...);
@@ -77,6 +79,8 @@ int main (int argc, char **argv) {
     FileIRXLoad("SNDRV.IRX");
     debugf("IRX Init Over\n");
     GraphInit();
+    TextRead();
+    PadReadInit();
 }
 
 void debugf(char *format, ...) {
@@ -85,6 +89,13 @@ void debugf(char *format, ...) {
         va_start(args,format);
         vprintf(format,args);
         va_end(args);
+    #endif
+    return;
+}
+
+void fdebugf(FILE *stream, char *format) {
+    #ifdef DEBUG
+        //unrecoverable code
     #endif
     return;
 }
