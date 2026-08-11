@@ -6,7 +6,7 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 #include "pad.h"
 
@@ -18,7 +18,7 @@ u_short pad_read_buf[2][16] = {0};
 // .sdata
 PAD_ACT pad_actuator[2] = {0};
 
-//Initialize gamepads
+// Initialize gamepads
 void PadReadInit() {
     if (scePadInit(0) < 1) {
         debugf("Pad Init Fatal Error");

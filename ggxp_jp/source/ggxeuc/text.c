@@ -6,11 +6,15 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 #include "text.h"
 
-//Reads font data into vram
+// .data
+extern u_short font_data[];         //System font data, likely generated with objcopy
+                                    //Structured as TEX_HEADER with data being size-16 in size
+
+// Reads font data into vram
 void TextRead(void) {
     int tbw;
     TEX_HEADER *h;

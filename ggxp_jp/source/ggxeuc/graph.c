@@ -6,7 +6,7 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 #include "graph.h"
 
@@ -24,7 +24,7 @@ struct {
 u_long back_color = 0;              //Framebuffer's background color
 int frame = 0;                      //Current rendered frame
 
-//Sets the framebuffer background color
+// Sets the framebuffer background color
 void BackColor(u_int rgb) {
     back_color = (u_long)rgb;
     return;
@@ -68,7 +68,7 @@ void GraphConv(void) {
     return;
 }
 
-//Initialize GS/Graphics
+// Initialize GS/Graphics
 void GraphInit(void) {
     sceDmaEnv env;
 
@@ -103,13 +103,13 @@ void GraphInit(void) {
     PacketSendNow(0);
     GraphBegin();
     GraphEnd();
-    FlushCache(0);
+    FlushCache(0);                  //EE syscall(100)
     sceGsPutDispEnv(&disp);
     frame = 0;
     return;
 }
 
-//Creates the framebuffer
+// Creates the framebuffer
 void MakeFullBuffer(void) {
     u_long *ptr;
 
@@ -126,7 +126,7 @@ void MakeFullBuffer(void) {
     return;
 }
 
-//Prepares the next frame
+// Prepares the next frame
 void GraphBegin(void) {
     PacketBegin();
     MakeFullBuffer();
@@ -135,7 +135,7 @@ void GraphBegin(void) {
     return;
 }
 
-//Renders the next frame
+// Renders the next frame
 void GraphEnd(void) {
     PacketEnd(1);
     sceGsSyncPath(0,0);

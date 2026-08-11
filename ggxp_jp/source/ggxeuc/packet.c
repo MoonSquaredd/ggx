@@ -6,7 +6,7 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 #include "packet.h"
 
@@ -23,7 +23,7 @@ DMA_HANDLE *dma_1 = &dma_1_;
 DMA_HANDLE *dma_2 = &dma_2_;
 DMA_HANDLE *dma_e = &dma_e_;
 
-//Initialize DMA handlers
+// Initialize DMA handlers
 void PacketInit(void) {
     sceDmaChan *dc;
 
@@ -132,7 +132,7 @@ u_long * PacketPackRegsWithTag(int id, u_long *reglist, int num) {
     return p->ptr;
 }
 
-//Copies size bytes from data to a DMA packet in quadwords
+// Copies size bytes from data to a DMA packet in quadwords
 u_long * PacketCopy(int id, u_long *data, int size) {
     DMA_HANDLE *p;
 
@@ -148,13 +148,13 @@ u_long * PacketCopy(int id, u_long *data, int size) {
     return p->ptr;
 }
 
-//Sets the DMA packet pointer
+// Sets the DMA packet pointer
 void PacketPointerSet(int id, u_long *ptr) {
     handle_list[id]->ptr = ptr;
     return;
 }
 
-//Starts a new DMA packet on all handlers
+// Starts a new DMA packet on all handlers
 void PacketBegin(void) {
     dma_f->ptr = dma_f->data[dma_f->page];
     dma_1->ptr = dma_1->data[dma_1->page];
@@ -167,7 +167,7 @@ void PacketBegin(void) {
     return;
 }
 
-//Sends a DMA packet immediately
+// Sends a DMA packet immediately
 void PacketSendNow(int id) {
     DMA_HANDLE *p;
 
@@ -185,7 +185,7 @@ void PacketSendNow(int id) {
     return;
 }
 
-//Ends all DMA packets
+// Ends all DMA packets
 void PacketEnd(int wait) {
     DMA_HANDLE *p;
     int id;

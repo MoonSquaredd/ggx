@@ -6,19 +6,19 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 // Definitions for graph.c
 
 #ifndef GGX_GRAPH
 #define GGX_GRAPH
 
-//SCE includes
+// SCE includes
 #include <eekernel.h>
 #include <graphdev.h>
 #include <libdma.h>
 
-//GGX includes
+// GGX includes
 #include "packet.h"
 
 void BackColor(u_int);              //Sets the framebuffer background color

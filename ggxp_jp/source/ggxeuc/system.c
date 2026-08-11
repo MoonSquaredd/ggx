@@ -8,21 +8,19 @@
 //
 // Last Revision: 11/Aug/2026
 
-// Definitions for file.c
-
-#ifndef GGX_FILE
-#define GGX_FILE
-
-// C includes
-#include <string.h>
-
-// SCE includes
-#include <sifdev.h>
-
-// GGX includes
 #include "system.h"
 
-void FileInit(void);                //Initialize file variables
-void FileIRXLoad(char*);            //Loads modules
+void debugf(char*,...);
 
-#endif
+// malloc wrapper
+void * mmalloc(int size, char *name) {
+    void *adr;
+
+    adr = malloc(size);
+    if (adr == NULL) {
+        debugf("Malloc Size Overflow %s\n",name);
+    } else {
+        debugf("Malloc Enable(%s) %x-%x\n",name,adr,(int)adr+size);
+    }
+    return adr;
+}

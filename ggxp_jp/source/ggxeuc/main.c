@@ -6,19 +6,19 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
-//C includes
+// C includes
 #include <stdio.h>
 #include <stdarg.h>
 
-//SCE includes
+// SCE includes
 #include <eekernel.h>
 #include <eeregs.h>
 #include <sifdev.h>
 #include <libcdvd.h>
 
-//GGX includes
+// GGX includes
 #include "graph.h"
 #include "text.h"
 #include "pad.h"
@@ -81,6 +81,7 @@ int main (int argc, char **argv) {
     GraphInit();
     TextRead();
     PadReadInit();
+    FileInit();
 }
 
 void debugf(char *format, ...) {

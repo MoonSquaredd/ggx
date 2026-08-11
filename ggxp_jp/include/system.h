@@ -8,21 +8,15 @@
 //
 // Last Revision: 11/Aug/2026
 
-// Definitions for file.c
+// Definitions for system.c
 
-#ifndef GGX_FILE
-#define GGX_FILE
+#ifndef GGX_SYSTEM
+#define GGX_SYSTEM
 
 // C includes
-#include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
 
-// SCE includes
-#include <sifdev.h>
-
-// GGX includes
-#include "system.h"
-
-void FileInit(void);                //Initialize file variables
-void FileIRXLoad(char*);            //Loads modules
+void * mmalloc(int,char*);          //malloc wrapper
 
 #endif

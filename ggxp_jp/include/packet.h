@@ -6,18 +6,18 @@
 // Decompilation made by lovenus
 // Thanks to all the Guilty Gear modding community <3
 //
-// Last Revision: 10/Aug/2026
+// Last Revision: 11/Aug/2026
 
 // Definitions for packet.c
 
 #ifndef GGX_PACKET
 #define GGX_PACKET
 
-//C includes
+// C includes
 #include <stdlib.h>
 #include <stddef.h>
 
-//SCE includes
+// SCE includes
 #include <eekernel.h>
 #include <libdma.h>
 
