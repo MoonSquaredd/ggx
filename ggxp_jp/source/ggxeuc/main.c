@@ -97,6 +97,39 @@ int main (int argc, char **argv) {
     JSTokorotenFlag = 0;
     heap_alloc();
     debugf("Initialize Over\n");
+    while (!sceGsSyncV(0));
+    do {
+        for (int i = 18; i >= 0; i--) {
+            for (int j = 19; j >= 0; j--) {
+                se_num_temp[i+1] = se_num_temp[i];
+            }
+            se_req_temp[i+1] = se_req_temp[i];
+        }
+        for (int i = 19; i >= 0; i--) {
+            se_num_temp[0][i] = 0;
+        }
+        se_req_temp[0] = 0;
+        GS_runtime_preset();
+        MeterReset();
+        GraphBegin();
+        //PadReadMain();
+        //soft_reset_check();
+        //SnDrvMain();
+        //SpriteInit();
+        //TextColor(0xffffff);
+        //TextPutD(40,5,JobMode,4);
+        //MeterColorChange(0xff);
+        //CreditExecute();
+        //JobMain();
+        //SpriteDisplay();
+        //FadeExecute();
+        //SongContExe();
+        //FileReadMain();
+        //MemoryMain();
+        //MeterColorChange(0xffffff);
+        GraphEnd();
+        TotalCounter += 1;
+    } while (true);
 }
 
 void debugf(char *format, ...) {

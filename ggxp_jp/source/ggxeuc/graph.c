@@ -147,3 +147,13 @@ void GraphEnd(void) {
     frame += 1;
     return;
 }
+
+void GS_runtime_preset(void) {
+    REG_GS_PMODE = 0x7f27;          //Read circuit 1&2, MMOD=ALP, AMOD=circuit 1 read, SLBG=blend with circuit 2 read, ALP=0x7f (127)
+    REG_GS_DISPFB1 = 0x1400;        //FBP=0, FBW=2(128), PSM=PSMCT32, DBX=0, DBY=0
+    REG_GS_DISPFB2 = 0x1400;        // **
+    REG_GS_DISPLAY1 = (disp.display.DX + 636) | dispoffset.sizey << 44 | dispoffset.sizex << 32 | 0x1800000 | (disp.display.DY + 50) << 12;
+    REG_GS_DISPLAY2 = (disp.display.DX + 636) | dispoffset.sizey << 44 | dispoffset.sizex << 32 | 0x1800000 | (disp.display.DY + 51) << 12;
+    REG_GS_EXTWRITE = 0;
+    return;
+}

@@ -17,5 +17,6 @@
 #include <eeregs.h>
 
 void MeterInit(void);
+void MeterReset(void);
 
 #endif

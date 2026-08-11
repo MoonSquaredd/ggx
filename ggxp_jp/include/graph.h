@@ -27,5 +27,6 @@ void GraphInit(void);               //Initialize GS/Graphics
 void MakeFullBuffer(void);          //Creates the framebuffer
 void GraphBegin(void);              //Prepares the next frame
 void GraphEnd(void);                //Renders the next frame
+void GS_runtime_preset(void);
 
 #endif
