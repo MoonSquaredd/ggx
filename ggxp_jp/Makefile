@@ -109,11 +109,12 @@ OBJS = 	build/main.o \
 		build/gallery.o \
 		build/boss.o \
 		build/story.o
+		#sce stuff goes here?
 
 LIBS =	#TODO
 
 SLPM_645.25: $(OBJS) 
-	$(CC) $(OBJS) -T linker_file.ld -o $@
+	$(CC) $(OBJS) -T linker_file.ld $(LIBS) -o $@
 
-build/%.o: src/%.c 
+build/%.o: source/ggxeuc/%.c 
 	$(CC) $(CFLAGS) -c $< -o $@
