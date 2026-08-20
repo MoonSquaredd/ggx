@@ -109,12 +109,41 @@ OBJS = 	build/main.o \
 		build/gallery.o \
 		build/boss.o \
 		build/story.o
-		#sce stuff goes here?
+		
+#unlikely command
+SCE_OBJS = 	build/sce/graphdev.o \
+			build/sce/libdma.o \
+			build/sce/devvu0.o \
+			build/sce/devgif.o \
+			build/sce/devvif0.o \
+			build/sce/libpad.o \
+			build/sce/eecdvd.o \
+			build/sce/libmc.o \
+			build/sce/klib.o \
+			build/sce/glue.o \
+			build/sce/cache.o \
+			build/sce/thread.o \
+			build/sce/tty.o \
+			build/sce/kprintf.o \
+			build/sce/sifcmd.o \
+			build/sce/sifrpc.o \
+			build/sce/filestub.o \
+			build/sce/eeloadfile.o \
+			build/sce/iopreset.o \
+			build/sce/diei.o \
+			build/sce/initsys.o \
+			build/sce/libosd.o \
+			build/sce/exit.o \
+			build/sce/tlbfunc.o \
+			build/sce/tlbtrap.o
 
-LIBS =	#TODO
+LIBS = -lm
 
 SLPM_645.25: $(OBJS) 
-	$(CC) $(OBJS) -T linker_file.ld $(LIBS) -o $@
+	$(CC) $(OBJS) $(SCE_OBJS) -T linker_file.ld $(LIBS) -o $@
 
 build/%.o: source/ggxeuc/%.c 
 	$(CC) $(CFLAGS) -c $< -o $@
+
+build/sce%.o: sce/%.c 
+	$(CC) -c $< -o $@
